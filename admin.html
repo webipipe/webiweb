@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administración de Zapatillas</title>
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+    <header>
+        <h1>Panel de Administración - Zapatillas</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="admin.html">Agregar Zapatillas</a></li>
+            
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="container">
+            <h2>Agregar Nuevas Zapatillas</h2>
+            <form action="/admin/agregar_zapatillas" method="POST" enctype="multipart/form-data">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" required><br><br>
+
+                <label for="precio">Precio:</label>
+                <input type="number" id="precio" name="precio" step="0.01" required><br><br>
+
+                <label for="descripcion">Descripción:</label><br>
+                <textarea id="descripcion" name="descripcion" rows="4" cols="50" required></textarea><br><br>
+
+                <label for="imagenZapatillas">Imagen:</label>
+                <input type="file" id="imagenZapatillas" name="imagenZapatillas" accept="image/*" required><br><br>
+
+                <input type="submit" value="Agregar Zapatillas">
+            </form>
+        </div>
+        
+        <div class="container">
+            <h2>Zapatillas Registradas</h2>
+            <ul id="zapatillasList"></ul>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 ZapatillasShop. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        // Función para cargar y mostrar las zapatillas registradas
+        async function loadZapatillas() {
+            try {
+                const response = await fetch('/admin/zapatillas');
+                const zapatillas = await response.json();
+                const zapatillasList = document.getElementById('zapatillasList');
+
+                zapatillasList.innerHTML = ''; 
+
+                zapatillas.forEach(zapatilla => {
+                    const li = document.createElement('li');
+                    li.textContent = `${zapatilla.nombre} - ${zapatilla.descripcion}`;
+
+                    const deleteButton = document.createElement('button');
+                    deleteButton.textContent = 'Eliminar';
+                    deleteButton.addEventListener('click', () => deleteZapatilla(zapatilla.id));
+
+                    li.appendChild(deleteButton);
+                    zapatillasList.appendChild(li);
+                });
+            } catch (error) {
+                console.error('Error al cargar zapatillas:', error);
+            }
+        }
+
+        // Función para eliminar una zapatilla
+        async function deleteZapatilla(id) {
+            try {
+                const response = await fetch(`/admin/zapatillas/${id}`, {
+                    method: 'DELETE'
+                });
+                if (response.ok) {
+                    console.log('Zapatilla eliminada correctamente.');
+                    loadZapatillas(); 
+                } else {
+                    console.error('Error al eliminar zapatilla:', response.statusText);
+                }
+            } catch (error) {
+                console.error('Error al eliminar zapatilla:', error);
+            }
+        }
+
+        // Cargar las zapatillas al cargar la página
+        window.addEventListener('DOMContentLoaded', () => {
+            loadZapatillas();
+        });
+    </script>
+</body>
+</html>

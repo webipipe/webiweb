@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro - Tienda de Zapatillas</title>
+    <link rel="stylesheet" href="css/regis.css">
+</head>
+<body>
+    <header>
+        <h1>Registro</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="hombre.html">Hombre</a></li>
+                <li><a href="mujer.html">Mujer</a></li>
+                <li><a href="accesorios.html">Accesorios</a></li>
+                <li><a href="ubicacion.html">Ubicación</a></li>
+                <li><a href="acerca.html">Acerca de Nosotros</a></li>
+                <li><a href="index.html">Inicio Sesion</a></li>
+                <li><a href="formulariopedidos.html">Realiza Tu Pedido</a></li>
+            </ul>
+            <form class="busqueda" action="#" method="get">
+                <input type="text" name="search" placeholder="Buscar...">
+                <button type="submit">Buscar</button>
+            </form>
+        </nav>
+    </header>
+    <main>
+        <div class="container">
+            <h1>Crear Cuenta</h1>
+            <form action="/auth/register" method="POST" id="registerForm">
+                <input type="text" id="name" name="name" placeholder="Nombre completo" required>
+                <input type="email" id="email" name="email" placeholder="Correo electrónico" required>
+                <input type="password" id="password" name="password" placeholder="Contraseña" required>
+                <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirmar contraseña" required>
+                <label for="role">Rol:</label>
+                <select id="role" name="role">
+                    <option value="usuario">Usuario</option>
+                    <option value="admin">Administrador</option>
+                </select>
+                <input type="submit" value="Registrarse">
+            </form>
+            <button onclick="window.location.href='index.html'">Ya tengo una cuenta</button>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 ZapatillasShop. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>

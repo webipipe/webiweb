@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agradecimiento por tu Pedido</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .center {
+            margin: 30px auto;
+            position: relative;
+            width: 400px;
+            background: black;
+            padding: 40px;
+            border-radius: 10px;
+            text-align: center;
+            color: white;
+        }
+
+        .center h1 {
+            margin-bottom: 30px;
+            font-size: 30px;
+            color: white;
+        }
+
+        .gracias-mensaje {
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .detalle-pedido {
+            margin-top: 30px;
+            text-align: center;
+            color: white;
+        }
+
+        .volver-btn {
+            display: block;
+            margin: 30px auto;
+            padding: 10px 20px;
+            background-color: red;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            width: 200px;
+            transition: background-color 0.2s;
+        }
+
+        .volver-btn:hover {
+            background-color: #2691d9;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Tienda de Zapatillas</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div class="center">
+            <h1>¡Gracias por tu pedido!</h1>
+            <div class="detalle-pedido" id="detalle-pedido"></div>
+            <a href="index.html" class="volver-btn">Volver al inicio</a>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Tienda de Zapatillas. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const pedido = JSON.parse(localStorage.getItem('pedido'));
+
+            if (pedido) {
+                const detallePedidoDiv = document.getElementById('detalle-pedido');
+                detallePedidoDiv.innerHTML = `
+                    <p><strong>Nombre del Cliente:</strong> ${pedido.nombre_cliente}</p>
+                    <p><strong>Modelo de Zapatillas:</strong> ${pedido.modelo_zapatillas}</p>
+                    <p><strong>Talla:</strong> ${pedido.talla_zapatillas}</p>
+                    <p><strong>Color:</strong> ${pedido.color_zapatillas}</p>
+                    <p><strong>Cantidad:</strong> ${pedido.cantidad}</p>
+                    <p><strong>Dirección de Envío:</strong> ${pedido.direccion_envio}</p>
+                    <p><strong>Teléfono de Contacto:</strong> ${pedido.telefono_contacto}</p>
+                `;
+            }
+        });
+    </script>
+</body>
+</html>

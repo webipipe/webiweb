@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio de Sesión - Tienda de Zapatillas</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Tienda de Zapatillas</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="hombre.html">Hombre</a></li>
+                <li><a href="mujer.html">Mujer</a></li>
+                <li><a href="accesorios.html">Accesorios</a></li>
+                <li><a href="ubicacion.html">Ubicación</a></li>
+                <li><a href="acerca.html">Acerca de Nosotros</a></li>
+                <li><a href="index.html">Inicio Sesion</a></li>
+                <li><a href="formulariopedidos.html">Realiza Tu Pedido</a></li>
+            </ul>
+            <form class="busqueda" action="#" method="get">
+                <input type="text" name="search" placeholder="Buscar...">
+                <button type="submit">Buscar</button>
+            </form>
+        </nav>
+    </header>
+    <div class="title-container">
+        <h1>Bienvenido a Zapatillas</h1>
+    </div>
+    <div class="container">
+        <h1>Iniciar Sesión</h1>
+        <form action="/login" method="POST" id="loginForm">
+            <input type="email" id="email" name="email" placeholder="Correo electrónico" required>
+            <input type="password" id="password" name="password" placeholder="Contraseña" required>
+            <input type="submit" value="Iniciar Sesión">
+        </form>
+        <button onclick="window.location.href='registro.html'">Registrarse</button>
+    </div>
+</body>
+</html>

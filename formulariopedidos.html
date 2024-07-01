@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Pedidos de Zapatillas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: white;
+        }
+    
+        header {
+            background-color: black;
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+    
+        header h1 {
+            margin: 0;
+        }
+    
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+    
+        nav ul li {
+            display: inline;
+            margin: 0 1rem;
+        }
+    
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+    
+        main {
+            padding: 20px;
+        }
+    
+        h2 {
+            text-align: center;
+            margin-top: 30px;
+            color: black;
+        }
+    
+        footer {
+            background-color: black;
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    
+        form {
+            margin: 30px auto;
+            position: relative;
+            width: 400px;
+            background: black;
+            padding: 40px;
+            border-radius: 10px;
+            text-align: center;
+            color: white;
+        }
+    
+        form div {
+            margin-bottom: 30px;
+            position: relative;
+        }
+    
+        form label {
+            position: absolute;
+            top: 0;
+            left: 0;
+            color: white;
+            transform: translateY(-50%);
+            font-size: 16px;
+            pointer-events: none;
+            transition: 0.2s;
+        }
+    
+        form input[type="text"],
+        form input[type="number"],
+        form input[type="tel"],
+        form input[type="submit"] {
+            width: 100%;
+            padding: 10px 0;
+            font-size: 16px;
+            color: white;
+            border: none;
+            border-bottom: 2px solid red;
+            outline: none;
+            background: transparent;
+            transition: 0.2s;
+            margin-top: 10px; 
+        }
+    
+        form input[type="submit"] {
+            background: red;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: 0.2s;
+            margin-top: 20px;
+        }
+    
+        form input[type="submit"]:hover {
+            border-color: #2691d9;
+            background: white;
+            color: black;
+        }
+    
+        form input:focus ~ label,
+        form input:valid ~ label {
+            top: -15px;
+            color: white;
+        }
+    
+        form span::before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #2691d9;
+            transition: 0.2s;
+            transform: scaleX(0);
+            transform-origin: right;
+        }
+    
+        form input:focus ~ span::before,
+        form input:valid ~ span::before {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+    
+        form input[type="text"]:focus,
+        form input[type="number"]:focus,
+        form input[type="tel"]:focus {
+            border-bottom: 2px solid #2691d9;
+        }
+    
+        form input[type="text"]:focus ~ label,
+        form input[type="number"]:focus ~ label,
+        form input[type="tel"]:focus ~ label,
+        form input[type="text"]:valid ~ label,
+        form input[type="number"]:valid ~ label,
+        form input[type="tel"]:valid ~ label {
+            top: -15px;
+            color: #2691d9;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Inicio</a></li>
+        </ul>
+    </nav>
+
+    <h2>Formulario de Pedidos de Zapatillas</h2>
+
+    <form id="formulario-pedido" action="/guardar_pedido" method="post">
+        <div>
+            <label for="nombre_cliente">Nombre del Cliente:</label>
+            <input type="text" id="nombre_cliente" name="nombre_cliente" required>
+        </div>
+        <div>
+            <label for="modelo_zapatillas">Modelo de Zapatillas:</label>
+            <input type="text" id="modelo_zapatillas" name="modelo_zapatillas" required>
+        </div>
+        <div>
+            <label for="talla_zapatillas">Talla:</label>
+            <input type="number" id="talla_zapatillas" name="talla_zapatillas" required>
+        </div>
+        <div>
+            <label for="color_zapatillas">Color:</label>
+            <input type="text" id="color_zapatillas" name="color_zapatillas" required>
+        </div>
+        <div>
+            <label for="cantidad">Cantidad:</label>
+            <input type="number" id="cantidad" name="cantidad" required>
+        </div>
+        <div>
+            <label for="direccion_envio">Dirección de Envío:</label>
+            <input type="text" id="direccion_envio" name="direccion_envio" required>
+        </div>
+        <div>
+            <label for="telefono_contacto">Teléfono de Contacto:</label>
+            <input type="tel" id="telefono_contacto" name="telefono_contacto" required>
+        </div>
+        <div>
+            <input type="submit" value="Enviar Pedido">
+        </div>
+    </form>
+
+    <footer>
+        <p>&copy; 2024 Tienda de Zapatillas. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>
